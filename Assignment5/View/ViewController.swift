@@ -16,7 +16,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
     
+    @IBOutlet var buttonCollection: [UIButton]!
+    
     var myStory = MyStory()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,33 +29,21 @@ class ViewController: UIViewController {
     func updateUI() {
         label.text = myStory.getPageText()
         
-        //Hide the buttons...
-        button0.isHidden = true
-        button1.isHidden = true
-        button2.isHidden = true
-        button3.isHidden = true
-        
-        if (myStory.getPageChoice0() != "") {
-            button0.isHidden = false
-            button0.setTitle(myStory.getPageChoice0(), for: .normal)
-        }
-        if (myStory.getPageChoice1() != "") {
-            button1.isHidden = false
-            button1.setTitle(myStory.getPageChoice1(), for: .normal)
-        }
-        if (myStory.getPageChoice2() != "") {
-            button2.isHidden = false
-            button2.setTitle(myStory.getPageChoice2(), for: .normal)
-        }
-        if (myStory.getPageChoice3() != "") {
-            button3.isHidden = false
-            button3.setTitle(myStory.getPageChoice3(), for: .normal)
+        var i = 0
+        buttonCollection.forEach { button in
+            button.isHidden = true
+            // Fill out button labels
+            if (myStory.getPageChoice(i) != "") {
+                button.isHidden = false
+                button.setTitle(myStory.getPageChoice(i), for: .normal)
+            }
+            i += 1
         }
     }
     
     
     @IBAction func buttonClick(_ sender: UIButton) {
-        var dest = myStory.findDestination(sender.currentTitle!)
+        let dest = myStory.findDestination(sender.currentTitle!)
         myStory.changePage(dest)
         updateUI()
     }

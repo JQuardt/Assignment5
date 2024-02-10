@@ -106,7 +106,7 @@ struct MyStory {
         ),
         StoryPage( // 10
             """
-            "Howdy! My name's $name. Say, what are you reading?" "Good afternoon, my name's Teddy. I am an ophthalmologist and studying Artificial Intelligence in Ophthalmology." "Op-tha What?" "Ophthalmology - you know an eye doctor?" "Oh... well... great... carry on." You don't want to disturb Teddy's research, so you head back outside.
+            You greet him with a "Howdy! Say, what are you reading?" The chap responds, "Good afternoon, my name's Teddy. I am an ophthalmologist and studying Artificial Intelligence in Ophthalmology." "Op-tha What?" "Ophthalmology - you know an eye doctor?" "Oh... well... great... carry on." You don't want to disturb Teddy's research, so you head back outside.
             """,
             choices: [
                 Choice(text: "Head back outside.", destination: 5),
@@ -122,18 +122,18 @@ struct MyStory {
         ),
         StoryPage( // 12
             """
-            You vow to bring Stinky Pete to justice. Stinky Pete's hideout is in Snake River Canyon. You ride out to the canyon on your steed. As you approach the canyon, your nostrils start to smell something fierce. It gets worse and worse as you continue into the canyon.  Well at least you know where Stinky Pete gets his name. Stinky Pete is wily and eyes you before you approach. He calls out, "Stop right thar! I'm the fastest pistol in the West and know how to shoot." You reply:
+            You vow to bring Stinky Pete to justice. You ride out to Stinky Pete's hideout in Snake River Canyon. As you approach, your nostrils smell something acrid. It gets worse and worse as you continue into the canyon. At least you know where Stinky Pete gets his name. Stinky Pete is wily and eyes you before you approach. He calls out, "Stop right thar! I'm the fastest pistol in the West and know how to shoot." You reply:
             
             
             """,
             choices: [
                 Choice(text: "\"Correction. You were the fastest pistol in the West!\"", destination: 16),
-                Choice(text: "\"I can see, well smell, that you have a problem. Must be hard making friends. Maybe we can help each other.\" Hold up the deodorant from your rucksack. \"This will solve your problem. If you agree to stop stealin' and thievin' I will give you it.\"", destination: 15),
+                Choice(text: "\"I can see, or smell, that you have a problem. Must be hard making friends.\" Hold up the deodorant from your rucksack. \"If you agree to stop stealin' and thievin' I will give you it.\"", destination: 15),
             ]
         ),
         StoryPage( // 13
             """
-            You're going to bring One-Eyed Wally in. One-Eyed Wally's hideout is in Oil Slick Cavern. You ride out to the Cavern on your steed. You see Oil Slick cavern. It has a sign outside so you're pretty sure it's the place. You spot One-Eyed Willy just inside the entrance of the cave. He must've heard you approach. He has one eye looking at you and the other eye is a bloated, purple mass. "Wow, that looks painful," you say. "People have been giving me grief about it my whole life," Willy says. "And I always take care of them," he says with an evil glint in his eye. What do you say to him?
+            You're going to bring One-Eyed Wally in. After riding out to his hideout in Oil Slick Cavern, you spot One-Eyed Willy inside the cave. He must've heard you approach. He has one eye looking at you and the other eye is a bloated, purple mass. "Wow, that looks painful," you say. "People have been giving me grief about it my whole life," Willy says, "And I always take care of them." What do you say to him?
             """,
             choices: [
                 Choice(text: "\"Looks like it's time for someone to take care of you!\" Grab your pistol.", destination: 17),
@@ -184,7 +184,7 @@ struct MyStory {
         ),
         StoryPage( // 19
             """
-            Junebug bashfully winks her lashes at your steed. She does look in love. Your horses canter together all the way back to town ready for a horsey wedding. Coyote Kate, inspired by all the love in the air, volunteers to be locked up. Bring Coyote Kate to jail. She does her time, followed up by an appropriate amount of community service. She never forgets the display of true love between steeds. This changes her life forever.
+            Junebug bashfully winks her lashes at your steed. She does look in love. Your horses canter together all the way back to town ready for a horsey wedding. Coyote Kate, inspired by all the love in the air, volunteers to be locked up. She does her time, but she never forgets the display of true love between steeds. This changes her life forever.
             """,
             choices: [
                 Choice(text: "Continue.", destination: 21),
@@ -213,34 +213,10 @@ struct MyStory {
     func getPageText() -> String {
         return story[pageIndex].text
     }
-
-    func getPageChoice0() -> String {
-        if story[pageIndex].choices.count > 0 {
-            return story[pageIndex].choices[0].text
-        } else {
-            return ""
-        }
-    }
-
-    func getPageChoice1() -> String {
-        if story[pageIndex].choices.count > 1 {
-            return story[pageIndex].choices[1].text
-        } else {
-            return ""
-        }
-    }
-
-    func getPageChoice2() -> String {
-        if story[pageIndex].choices.count > 2 {
-            return story[pageIndex].choices[2].text
-        } else {
-            return ""
-        }
-    }
-
-    func getPageChoice3() -> String {
-        if story[pageIndex].choices.count > 3 {
-            return story[pageIndex].choices[3].text
+    
+    func getPageChoice(_ num : Int) -> String {
+        if story[pageIndex].choices.count > num {
+            return story[pageIndex].choices[num].text
         } else {
             return ""
         }
