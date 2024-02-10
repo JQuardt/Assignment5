@@ -257,6 +257,20 @@ struct MyStory {
     mutating func changePage(_ newPageNum : Int) {
         pageIndex = newPageNum
     }
+    
+    func findDestination(_ chosen : String) -> Int {
+        //check against choice text
+        //get destination from that number.
+        var nextDestination : Int = 0
+        var index = 0
+        for choiceArray in story[pageIndex].choices {
+            if chosen == choiceArray.text {
+                nextDestination = choiceArray.destination
+            }
+            index += 1
+        }
+        return nextDestination
+    }
 }
 
 

@@ -54,8 +54,9 @@ class ViewController: UIViewController {
     
     
     @IBAction func buttonClick(_ sender: UIButton) {
-        //var choice : Int = Int(UIButton.title(<#T##self: UIButton##UIButton#>))
-        //myStory.getChoiceDestination(choice)
+        var dest = myStory.findDestination(sender.currentTitle!)
+        myStory.changePage(dest)
+        updateUI()
     }
     
 }
