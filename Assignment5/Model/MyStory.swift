@@ -41,7 +41,7 @@ struct MyStory {
         ),
         StoryPage( // 3
             """
-            Oh that's right, you're riding Dominic. Dominic he-haws mighty loudly as you loudly approach the town.:Continue.:5
+            Oh that's right, you're riding Dominic. Dominic he-haws mighty loudly as you loudly approach the town.
             """,
             choices: [
                 Choice(text: "Continue", destination: 5),
